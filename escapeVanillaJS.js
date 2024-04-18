@@ -20,16 +20,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // 🪲 Bug: Asynchronous function ?
-    document.getElementById("solveRoom3").addEventListener("click", () => {
-        fetch('directions.json') 
-            .then(response => response.json())
-            .then(directions => {
-                navigateLabyrinth(directions)
-                    .then(message => {
-                        // 🪲 Bug: Incorrect method
-                        document.getElementById("room3Result").innerHTML = message;
-                    });
-            });
+    document.getElementById("solveRoom3").addEventListener("click", async () => {
+        try {
+            const response = await fetch('directions.json');
+            const data = await response.json();
+            const directions = await navigateLabyrinth(data);
+            
+            // 🪲 Bug: Incorrect method
+            document.getElementById("room3Result").innerHTML = directions;
+        } catch (error) {
+            console.error("This is an error", error)
+        }   
     });
 });
 
