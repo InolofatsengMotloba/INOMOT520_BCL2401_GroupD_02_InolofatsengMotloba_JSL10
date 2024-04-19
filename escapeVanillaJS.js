@@ -23,11 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("solveRoom3").addEventListener("click", async () => {
         try {
             const response = await fetch('directions.json');
-            const data = await response.json();
-            const directions = await navigateLabyrinth(data);
+            const directions = await response.json();
+            const message = await navigateLabyrinth(directions);
             
-            // 🪲 Bug: Incorrect method
-            document.getElementById("room3Result").innerHTML = directions;
+            // 🌻: Corrected the method
+            document.getElementById("room3Result").textContent = message;
         } catch (error) {
             console.error("This is an error", error)
         }   
