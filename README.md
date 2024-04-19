@@ -15,3 +15,6 @@ The Escape Vanilla JS Challenge is an interactive web-based project focusing on 
 8. Added the `await` keyword before `new Promise` in `navigateLabyrinth` to ensure the simulation of asynchronous operations works as intended.
 
 ![alt text](MyJSL10Solution.png)
+
+## Reflections:
+Through this challenge, I was able to strengthen my problem-solving abilities by thinking critically and creatively. This project also reinforced my understanding of the fundamentals as I had to revist them again. It also encouraged me to pay close attention to details within the code. 
