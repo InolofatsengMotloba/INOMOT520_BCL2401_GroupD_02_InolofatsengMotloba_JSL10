@@ -1,25 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 🪲 Bug: Incorrect ID used for attaching the event listener
+    // 🌻: Corrected ID used for attaching the event listener
     document.getElementById("solveRoom1").addEventListener("click", () => {
         fetch('books.json') 
             .then(response => response.json())
             .then(books => {
                 const mostRecentBook = findMostRecentBook(books);
-                // 🪲 Bug: Incorrect element ID
+                // 🌻: Corrected element ID
                 document.getElementById("room1Result").textContent = `The key to the next room is: ${mostRecentBook.title}`;
             });
     });
 
     document.getElementById("solveRoom2").addEventListener("click", () => {
         const jsConcepts = new Set(['closure', 'scope', 'hoisting', 'async']);
-        // 🪲 Bug: What's mssing from JS concepts?
+        // 🌻: Added 'async" which was missing from JS concepts
         const reactConcepts = new Set(['components', 'jsx', 'hooks', 'async']);
-        // 🪲 Bug: Incorrect function call
+        // 🌻: Corrected the function call
         const commonConcepts = findIntersection(jsConcepts, reactConcepts);
         document.getElementById("room2Result").textContent = `The code to unlock the door is: ${Array.from(commonConcepts).join(', ')}`;
     });
 
-    // 🪲 Bug: Asynchronous function ?
+    // 🌻: Asynchronous function 
     document.getElementById("solveRoom3").addEventListener("click", async () => {
         try {
             const response = await fetch('directions.json');
@@ -35,12 +35,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function findMostRecentBook(books) {
-    // 🪲 Bug: Logic error
+    // 🌻: Fixed the Logic error
     return books.reduce((mostRecent, book) => new Date(book.published) > new Date(mostRecent.published) ? book : mostRecent);
 }
 
 function findIntersection(setA, setB) {
-    // 🪲 Bug: Incorrect logic
+    // 🌻: Correct logic
     const intersection = new Set();
     for (const arrayElement of setA) {
         if (setB.has(arrayElement)) {
@@ -52,7 +52,7 @@ function findIntersection(setA, setB) {
 
 async function navigateLabyrinth(directions) {
     for (let direction of directions) {
-        // 🪲 Bug: No delay
+        // 🌻: Added a delay
         await new Promise(resolve => setTimeout(resolve, 1000));
         console.log(`Navigating: ${direction.step}`);
     }
